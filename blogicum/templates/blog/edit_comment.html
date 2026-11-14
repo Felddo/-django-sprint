@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load django_bootstrap5 %}
+
+{% block title %}
+  Редактирование комментария
+{% endblock %}
+
+{% block content %}
+  <div class="col d-flex justify-content-center">
+    <div class="card" style="width: 40rem;">
+
+      <div class="card-header">
+        Редактирование комментария
+      </div>
+
+      <div class="card-body">
+
+        <form method="post">
+          {% csrf_token %}
+
+          {% bootstrap_form form %}
+
+          {% bootstrap_button button_type="submit" content="Сохранить" %}
+        </form>
+
+        <a
+          class="btn btn-sm text-muted mt-2"
+          href="{% url 'blog:post_detail' post.id %}">
+          Вернуться к публикации
+        </a>
+
+      </div>
+    </div>
+  </div>
+{% endblock %}
